@@ -6,8 +6,8 @@
   <title>Aleksandr Bowkis</title>
   <style>
     body {
-      background-color: #f2f1e9;
-      font-family: -apple-system, BlinkMacSystemFont, 'Georgia', Helvetica, Arial, sans-serif;
+      background-color: #f5f5f5;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
       color: #333;
       line-height: 1.6;
       max-width: 600px;
@@ -30,8 +30,8 @@
     }
     
     .profile-image {
-      width: 150px;
-      height: 150px;
+      width: 100px;
+      height: 100px;
       margin: 0 0 20px 0;
       border-radius: 50%;
       overflow: hidden;
@@ -46,14 +46,14 @@
       object-fit: cover;
     }
     
-    /* style for non-links */
+    /* Default style for non-links */
     .non-link {
       color: #333;
       text-decoration: none;
       cursor: default;
     }
     
-    /* style for links */
+    /* Only style actual links */
     a.real-link {
       color: #0366d6;
       text-decoration: none;
@@ -61,6 +61,30 @@
     
     a.real-link:hover {
       text-decoration: underline;
+    }
+    
+    /* Publication styling */
+    .publications li {
+      margin-bottom: 25px;
+    }
+    
+    .pub-title {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    
+    .pub-authors {
+      margin-bottom: 5px;
+    }
+    
+    .pub-links {
+      margin-bottom: 5px;
+    }
+    
+    .pub-summary {
+      font-size: 0.95em;
+      color: #555;
+      line-height: 1.5;
     }
   </style>
 </head>
@@ -71,7 +95,7 @@
   
   <h1>Aleksandr Bowkis</h1>
   
-  <p>Aleksandr Bowkis is a PhD candidate in Cosmology at the Institute of Astronomy, Kavli Institute of Cosmology, University of Cambridge. His research is focussed on the reconstructed CMB lensing bispectrum.</p>
+  <p>Aleksandr Bowkis is a PhD candidate in Cosmology at the Institute of Astronomy, University of Cambridge. His research is focussed on the reconstructed CMB lensing bispectrum.</p>
     
   <h2>Education</h2>
   <ul>
@@ -80,8 +104,18 @@
   </ul>
   
   <h2>Publications</h2>
-  <ul>
-    <li><span class="non-link">Kalaja A., Orlando G., Bowkis A., Challinor A., Meerburg D., Namikawa T. The reconstructed CMB lensing bispectrum (2023).</span></li>
+  <ul class="publications">
+    <li>
+      <div class="pub-title">The reconstructed CMB lensing bispectrum (2023)</div>
+      <div class="pub-authors">Kalaja A., Orlando G., <strong>Bowkis A.</strong>, Challinor A., Meerburg D., Namikawa T.</div>
+      <div class="pub-links">
+        <a href="https://arxiv.org/abs/xxxx.xxxxx" target="_blank" class="real-link">arXiv</a> | 
+        <a href="https://inspirehep.net/literature/xxxxx" target="_blank" class="real-link">INSPIRE</a>
+      </div>
+      <div class="pub-summary">
+        This paper investigates the bispectrum of reconstructed CMB lensing, contributing to our understanding of cosmic structure formation. We develop a novel approach to analyzing non-Gaussian signals in the CMB lensing field.
+      </div>
+    </li>
   </ul>
   
   <h2>Research</h2>
