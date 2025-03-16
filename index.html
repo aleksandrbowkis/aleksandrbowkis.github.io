@@ -6,7 +6,7 @@
   <title>Aleksandr Bowkis</title>
   <style>
     body {
-      background-color: #f5f5f5;
+      background-color: #d1e8c8;
       font-family: Georgia, -apple-system, BlinkMacSystemFont, serif;
       color: #3b2209;
       line-height: 1.6;
@@ -16,7 +16,12 @@
       text-align: left;
     }
     
-    h1, h2 {
+    h1 {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+    
+    h2 {
       margin-top: 30px;
     }
     
@@ -29,15 +34,22 @@
       margin-bottom: 10px;
     }
     
+    /* Header section styling */
+    .header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    
     .profile-image {
       width: 100px;
       height: 100px;
-      margin: 0 0 20px 0;
       border-radius: 50%;
       overflow: hidden;
       display: flex;
       justify-content: center;
       align-items: center;
+      margin-right: 20px;
     }
     
     .profile-image img {
@@ -89,11 +101,12 @@
   </style>
 </head>
 <body>
-  <div class="profile-image">
-    <img src="assets/Headshot.jpg" alt="Aleksandr Bowkis">
+  <div class="header">
+    <div class="profile-image">
+      <img src="assets/Headshot.jpg" alt="Aleksandr Bowkis">
+    </div>
+    <h1>Aleksandr Bowkis</h1>
   </div>
-  
-  <h1>Aleksandr Bowkis</h1>
   
   <p>Aleksandr Bowkis is a PhD candidate in Cosmology at the Institute of Astronomy, University of Cambridge. His research is focussed on the reconstructed CMB lensing bispectrum.</p>
     
