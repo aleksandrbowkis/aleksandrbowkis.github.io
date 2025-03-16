@@ -10,59 +10,83 @@
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
       color: #333;
       line-height: 1.6;
-      max-width: 800px;
+      max-width: 600px;
       margin: 0 auto;
       padding: 20px;
+      text-align: left;
     }
-    a {
+    
+    h1, h2 {
+      margin-top: 30px;
+    }
+    
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    
+    li {
+      margin-bottom: 10px;
+    }
+    
+    .profile-image {
+      width: 100px;
+      height: 100px;
+      margin: 0 0 20px 0;
+      border-radius: 50%;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .profile-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    /* style for non-links */
+    .non-link {
+      color: #333;
+      text-decoration: none;
+      cursor: default;
+    }
+    
+    /* style for links */
+    a.real-link {
       color: #0366d6;
       text-decoration: none;
     }
-    a:hover {
+    
+    a.real-link:hover {
       text-decoration: underline;
-    }
-    .profile-image {
-      width: 200px;
-      height: 200px;
-      position: relative;
-      overflow: hidden;
-      border-radius: 50%;
-      margin: 0 auto 20px;
-    }
-    .profile-image img {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 100%;
-      height: auto;
-      min-height: 100%;
     }
   </style>
 </head>
 <body>
-  <h1>Aleksandr Bowkis</h1>
-  
   <div class="profile-image">
     <img src="assets/Headshot.jpg" alt="Aleksandr Bowkis">
   </div>
+  
+  <h1>Aleksandr Bowkis</h1>
   
   <p>Aleksandr Bowkis is a PhD candidate in Cosmology at the Institute of Astronomy, University of Cambridge. His research is focussed on the reconstructed CMB lensing bispectrum.</p>
     
   <h2>Education</h2>
   <ul>
-    <li><a href="#">MMath, Distinction, University of Cambridge 2019</a></li>
-    <li><a href="#">BA, First Class, University of Cambridge 2018</a></li>
+    <li><span class="non-link">MMath, Distinction, University of Cambridge 2019</span></li>
+    <li><span class="non-link">BA, First Class, University of Cambridge 2018</span></li>
   </ul>
   
   <h2>Publications</h2>
   <ul>
-    <li><a href="#">Kalaja A., Orlando G., Bowkis A., Challinor A., Meerburg D., Namikawa T. The reconstructed CMB lensing bispectrum (2023). </a></li>
+    <li><span class="non-link">Kalaja A., Orlando G., Bowkis A., Challinor A., Meerburg D., Namikawa T. The reconstructed CMB lensing bispectrum (2023).</span></li>
   </ul>
   
   <h2>Research</h2>
   <ul>
-    <li><a href="https://scholar.google.co.uk/citations?user=b4SEHnEAAAAJ&hl=en&oi=ao" target="_blank">Google Scholar</a></li>
+    <li><a href="https://scholar.google.co.uk/citations?user=b4SEHnEAAAAJ&hl=en&oi=ao" target="_blank" class="real-link">Google Scholar</a></li>
   </ul>
 </body>
 </html>
