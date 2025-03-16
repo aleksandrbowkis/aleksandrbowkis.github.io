@@ -1,5 +1,6 @@
 <div style="background-color: #e9f2f0; padding: 20px; max-width: 800px; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">
 <img src="assets/Headshot.jpg" alt="Alt text for the image" width="300" style="border-radius: 5px;">
+<img src="assets/Headshot.jpg" alt="Aleksandr Bowkis" style="width: 200px; height: 200px; border-radius: 50%; object-fit: cover;">
   
 # Aleksandr Bowkis
 Aleksandr Bowkis is a PhD candidate in Cosmology at the Institute of Astronomy, University of Cambridge. His research is focussed on the reconstructed CMB lensing bispectrum.
