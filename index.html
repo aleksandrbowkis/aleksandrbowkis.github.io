@@ -2,151 +2,253 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Aleksandr Bowkis</title>
+  <meta name="description" content="Aleksandr Bowkis — research scientist working on AI alignment at the AI Security Institute.">
+  <link rel="canonical" href="https://aleksandrbowkis.github.io/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alice&family=Lora:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    body {
-      background-color: #f2ede1;
-      font-family: Georgia, -apple-system, BlinkMacSystemFont, serif;
-      color: #3b2209;
-      line-height: 1.6;
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 20px;
-      text-align: left;
+    :root {
+      --bg: #fbe5e5;
+      --text: #1c1313;
+      --accent: #e08a89;
     }
-    
-    h1 {
-      margin-top: 0;
-      margin-bottom: 0;
-    }
-    
-    h2 {
-      margin-top: 30px;
-    }
-    
-    ul {
-      list-style-type: none;
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
       padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Lora', Georgia, serif;
+      font-size: 18px;
+      line-height: 1.6;
     }
-    
-    li {
-      margin-bottom: 10px;
+    main {
+      max-width: 960px;
+      margin: 0;
+      padding: 4rem 1.5rem 6rem 2rem;
     }
-    
-    /* Header section styling */
-    .header {
-      display: flex;
-      align-items: center;
-      margin-bottom: 20px;
+    h1, h2 {
+      font-family: 'Alice', Georgia, serif;
+      font-weight: normal;
+      letter-spacing: 0.01em;
     }
-    
-    .profile-image {
-      width: 100px;
-      height: 100px;
+    h1 {
+      font-size: 2.4rem;
+      margin: 0 0 0.5rem;
+    }
+    h2 {
+      font-size: 1.5rem;
+      margin: 2.5rem 0 0.75rem;
+    }
+    .headshot {
+      width: 110px;
+      height: 110px;
       border-radius: 50%;
-      overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-right: 20px;
-    }
-    
-    .profile-image img {
-      width: 100%;
-      height: 100%;
       object-fit: cover;
+      display: block;
+      margin-bottom: 1.5rem;
     }
-    
-    /* Default style for non-links */
-    .non-link {
-      color: #3b2209;
+    p, li { margin: 0.5rem 0; }
+    ul { padding-left: 1.2rem; }
+    a, a:visited {
+      color: var(--text);
       text-decoration: none;
+      background: #ffc4c4;
+      padding: 0.05em 0.35em;
+      border-radius: 0.5em;
+      transition: box-shadow 0.25s ease;
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
+    }
+    a:hover {
+      box-shadow: 0 0 0 0.1em rgba(255, 196, 196, 0.95),
+                  0 0 0.6em 0.1em rgba(224, 138, 137, 0.5);
+    }
+    ::selection {
+      background: var(--accent);
+      color: var(--text);
+    }
+    .tagline {
+      font-size: 1.05rem;
+      margin-bottom: 2rem;
+      color: var(--text);
+      opacity: 0.85;
+    }
+    footer {
+      max-width: 960px;
+      margin: 0;
+      padding: 0 1.5rem 3rem 2rem;
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+    .lensed-name {
+      display: inline-block;
       cursor: default;
     }
-    
-    /* Only style actual links */
-    a.real-link {
-    color: #2a1907; /* Slightly darker than text */
-    text-decoration: none;
-    border-bottom: 1px solid rgba(59, 34, 9, 0.3); /* Semi-transparent underline */
-    }
-
-    a.real-link:hover {
-    border-bottom: 1px solid rgba(59, 34, 9, 0.8); /* Darker on hover */
-    }
-    
-    /* Publication styling */
-    .publications li {
-      margin-bottom: 25px;
-    }
-    
-    .pub-title {
-      font-weight: bold;
-      margin-bottom: 5px;
-    }
-    
-    .pub-authors {
-      margin-bottom: 5px;
-    }
-    
-    .pub-links {
-      margin-bottom: 5px;
-    }
-    
-    .pub-summary {
-      font-size: 0.95em;
-      color: #3b2209;
-      line-height: 1.5;
+    .lensed-name span {
+      display: inline-block;
+      transition: transform 0.12s ease-out;
+      will-change: transform;
     }
   </style>
 </head>
 <body>
-  <div class="header">
-    <div class="profile-image">
-      <img src="assets/Headshot.jpg" alt="Aleksandr Bowkis">
-    </div>
-    <h1>Aleksandr Bowkis</h1>
-  </div>
-  
-  <p>Aleksandr Bowkis is a PhD candidate in Cosmology at the Institute of Astronomy, University of Cambridge. His research is focussed on the reconstructed CMB lensing bispectrum.</p>
-    
-  <h2>Education</h2>
-  <ul>
-    <li><span class="non-link">MMath, University of Cambridge, Distinction (2019)</span></li>
-    <li><span class="non-link">BA, University of Cambridge, First Class (2018)</span></li>
-  </ul>
-  
-  <h2>Publications</h2>
-  <div class="publication-header">
-    <span>Also available on </span><a href="https://scholar.google.co.uk/citations?user=b4SEHnEAAAAJ&hl=en&oi=ao" target="_blank" class="real-link">Google Scholar</a>
-  </div>
-  <ul class="publications">
-    <li>
-      <div class="pub-title">The reconstructed CMB lensing bispectrum (2023)</div>
-      <div class="pub-authors">Kalaja A., Orlando G., <strong>Bowkis A.</strong>, Challinor A., Meerburg D., Namikawa T.</div>
-      <div class="pub-links">
-        <a href="https://arxiv.org/abs/2210.16203" target="_blank" class="real-link">arXiv</a> | 
-        <a href="https://inspirehep.net/literature/2173138" target="_blank" class="real-link">INSPIRE</a>
-      </div>
-      <div class="pub-summary">
-        Calculated for the first time the leading-order noise-biases in the reconstructed CMB lensing bispectrum, a non-Gaussian statistic providing insight into non-linear growth of large scale structure in the universe. Verified analytic predictions with paired simulations, isolating individual biases.
-      </div>
-    </li>
-  </ul>
-  
+  <main>
+    <img class="headshot" src="/Headshot.jpg" alt="Aleksandr Bowkis">
+    <h1 class="lensed-name">Aleksandr Bowkis</h1>
+    <p class="tagline">
+      Aleksandr is a research scientist working on AI alignment at the
+      <a href="https://www.aisi.gov.uk/">AI Security Institute</a>.
+      Previously he did a PhD in cosmology, focussing on the reconstructed CMB
+      lensing bispectrum, at Gonville &amp; Caius College, University of
+      Cambridge.
+    </p>
 
-  <h2>Short Essays</h2>
-  <ul class="publications">
-    <li>
-      <div class="pub-title">
-        <a href="essays/Hinton.html" class="real-link">Does AI pose an existential risk by default?</a>
-      </div>
-      <div class="pub-summary">
-        A brief exploration of Geoffrey Hinton's concerns about existential risk from artificial intelligence.
-      </div>
-    </li>
-  </ul>
+    <h2>Education</h2>
+    <ul>
+      <li>PhD in Astrophysics (Cosmology), University of Cambridge &mdash; awaiting viva (submitted 2025)</li>
+      <li>MMath in Mathematics, University of Cambridge (Distinction, 2019)</li>
+      <li>BA in Natural Sciences (Theoretical Physics), University of Cambridge (First Class, 2018)</li>
+    </ul>
 
-  <h2>Photography</h2>
-<p>View my <a href="assets/A_Bowkis_photography_portfolio.pdf" class="real-link" target="_blank">photography portfolio</a>.</p>
+    <h2>Publications</h2>
+    <ul>
+      <li>
+        <em>Automated alignment is harder than you think</em> (2026) &mdash;
+        <a href="https://arxiv.org/abs/2605.06390">arXiv</a>
+      </li>
+      <li>
+        <em>The reconstructed CMB lensing bispectrum</em> (2023) &mdash;
+        <a href="https://arxiv.org/abs/2210.16203">arXiv</a> &middot;
+        <a href="https://inspirehep.net/literature/2173273">INSPIRE-HEP</a>
+      </li>
+    </ul>
+
+    <h2>Elsewhere</h2>
+    <ul>
+      <li><a href="https://scholar.google.com/citations?user=b4SEHnEAAAAJ">Google Scholar</a></li>
+      <li><a href="https://www.linkedin.com/in/aleksandr-bowkis">LinkedIn</a></li>
+    </ul>
+  </main>
+
+  <script>
+  (() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const name = document.querySelector('.lensed-name');
+    if (!name) return;
+
+    const text = name.textContent;
+    name.textContent = '';
+    const letters = [];
+    for (const ch of text) {
+      const s = document.createElement('span');
+      s.textContent = ch;
+      if (ch === ' ') s.style.whiteSpace = 'pre';
+      name.appendChild(s);
+      letters.push(s);
+    }
+
+    const sigma = 55, strength = 22;
+
+    name.addEventListener('mousemove', (e) => {
+      const mx = e.clientX, my = e.clientY;
+      for (const l of letters) {
+        const r = l.getBoundingClientRect();
+        const cx = r.left + r.width / 2;
+        const cy = r.top + r.height / 2;
+        const dx = cx - mx, dy = cy - my;
+        const dist = Math.hypot(dx, dy) || 0.01;
+        const wgt = Math.exp(-(dist * dist) / (2 * sigma * sigma));
+        const tx = (dx / dist) * strength * wgt;
+        const ty = (dy / dist) * strength * wgt;
+        l.style.transform = `translate(${tx}px, ${ty}px)`;
+      }
+    });
+
+    name.addEventListener('mouseleave', () => {
+      for (const l of letters) l.style.transform = '';
+    });
+  })();
+
+  (() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const img = document.querySelector('img.headshot');
+    if (!img) return;
+
+    function setup() {
+      const W = 220, H = 220;
+      const canvas = document.createElement('canvas');
+      canvas.className = img.className;
+      canvas.width = W;
+      canvas.height = H;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, W, H);
+      let srcData;
+      try {
+        srcData = ctx.getImageData(0, 0, W, H);
+      } catch (e) {
+        return;
+      }
+      img.replaceWith(canvas);
+
+      const rE = 32;
+      const rE2 = rE * rE;
+      let lens = null;
+
+      canvas.addEventListener('mousemove', e => {
+        const rect = canvas.getBoundingClientRect();
+        lens = {
+          x: ((e.clientX - rect.left) / rect.width) * W,
+          y: ((e.clientY - rect.top) / rect.height) * H
+        };
+      });
+      canvas.addEventListener('mouseleave', () => {
+        lens = null;
+        ctx.putImageData(srcData, 0, 0);
+      });
+
+      function render() {
+        if (lens) {
+          const out = ctx.createImageData(W, H);
+          const src = srcData.data, dst = out.data;
+          const lx = lens.x, ly = lens.y;
+          for (let y = 0; y < H; y++) {
+            for (let x = 0; x < W; x++) {
+              const dx = x - lx, dy = y - ly;
+              const r2 = dx * dx + dy * dy;
+              let sx, sy;
+              if (r2 < 1) { sx = x; sy = y; }
+              else {
+                const factor = 1 - rE2 / r2;
+                sx = lx + dx * factor;
+                sy = ly + dy * factor;
+              }
+              const sxi = sx | 0;
+              const syi = sy | 0;
+              const idx = (y * W + x) * 4;
+              if (sxi >= 0 && sxi < W && syi >= 0 && syi < H) {
+                const sidx = (syi * W + sxi) * 4;
+                dst[idx]     = src[sidx];
+                dst[idx + 1] = src[sidx + 1];
+                dst[idx + 2] = src[sidx + 2];
+                dst[idx + 3] = src[sidx + 3];
+              }
+            }
+          }
+          ctx.putImageData(out, 0, 0);
+        }
+        requestAnimationFrame(render);
+      }
+      requestAnimationFrame(render);
+    }
+
+    if (img.complete && img.naturalWidth > 0) setup();
+    else img.addEventListener('load', setup);
+  })();
+  </script>
+</body>
+</html>
