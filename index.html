@@ -89,6 +89,10 @@
       display: inline-block;
       cursor: default;
     }
+    .lensed-name .word {
+      display: inline-block;
+      white-space: nowrap;
+    }
     .lensed-name span {
       display: inline-block;
       will-change: transform;
@@ -143,12 +147,22 @@
     const text = name.textContent;
     name.textContent = '';
     const letters = [];
-    for (const ch of text) {
-      const s = document.createElement('span');
-      s.textContent = ch;
-      if (ch === ' ') s.style.whiteSpace = 'pre';
-      name.appendChild(s);
-      letters.push({ el: s, cx: 0, cy: 0, tx: 0, ty: 0, x: 0, y: 0 });
+    const tokens = text.split(/(\s+)/);
+    for (const token of tokens) {
+      if (!token) continue;
+      if (/^\s+$/.test(token)) {
+        name.appendChild(document.createTextNode(token));
+      } else {
+        const wordSpan = document.createElement('span');
+        wordSpan.className = 'word';
+        for (const ch of token) {
+          const s = document.createElement('span');
+          s.textContent = ch;
+          wordSpan.appendChild(s);
+          letters.push({ el: s, cx: 0, cy: 0, tx: 0, ty: 0, x: 0, y: 0 });
+        }
+        name.appendChild(wordSpan);
+      }
     }
 
     const sigma = 55, strength = 22;
