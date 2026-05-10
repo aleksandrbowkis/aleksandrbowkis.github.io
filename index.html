@@ -91,7 +91,6 @@
     }
     .lensed-name span {
       display: inline-block;
-      transition: transform 0.12s ease-out;
       will-change: transform;
     }
   </style>
@@ -149,29 +148,50 @@
       s.textContent = ch;
       if (ch === ' ') s.style.whiteSpace = 'pre';
       name.appendChild(s);
-      letters.push(s);
+      letters.push({ el: s, cx: 0, cy: 0, tx: 0, ty: 0, x: 0, y: 0 });
     }
 
     const sigma = 55, strength = 22;
+    let mx = -9999, my = -9999;
+    let active = false;
 
-    name.addEventListener('mousemove', (e) => {
-      const mx = e.clientX, my = e.clientY;
-      for (const l of letters) {
-        const r = l.getBoundingClientRect();
-        const cx = r.left + r.width / 2;
-        const cy = r.top + r.height / 2;
-        const dx = cx - mx, dy = cy - my;
-        const dist = Math.hypot(dx, dy) || 0.01;
-        const wgt = Math.exp(-(dist * dist) / (2 * sigma * sigma));
-        const tx = (dx / dist) * strength * wgt;
-        const ty = (dy / dist) * strength * wgt;
-        l.style.transform = `translate(${tx}px, ${ty}px)`;
+    function updateRects() {
+      for (const lt of letters) {
+        const r = lt.el.getBoundingClientRect();
+        lt.cx = r.left + r.width / 2;
+        lt.cy = r.top + r.height / 2;
       }
+    }
+    updateRects();
+    window.addEventListener('resize', updateRects);
+    window.addEventListener('scroll', updateRects, { passive: true });
+
+    name.addEventListener('mousemove', e => {
+      mx = e.clientX; my = e.clientY;
+      active = true;
+    });
+    name.addEventListener('mouseleave', () => {
+      active = false;
     });
 
-    name.addEventListener('mouseleave', () => {
-      for (const l of letters) l.style.transform = '';
-    });
+    function tick() {
+      for (const lt of letters) {
+        if (active) {
+          const dx = lt.cx - mx, dy = lt.cy - my;
+          const dist = Math.hypot(dx, dy) || 0.01;
+          const wgt = Math.exp(-(dist * dist) / (2 * sigma * sigma));
+          lt.tx = (dx / dist) * strength * wgt;
+          lt.ty = (dy / dist) * strength * wgt;
+        } else {
+          lt.tx = 0; lt.ty = 0;
+        }
+        lt.x += (lt.tx - lt.x) * 0.25;
+        lt.y += (lt.ty - lt.y) * 0.25;
+        lt.el.style.transform = `translate(${lt.x.toFixed(2)}px, ${lt.y.toFixed(2)}px)`;
+      }
+      requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
   })();
 
   (() => {
@@ -180,7 +200,7 @@
     if (!img) return;
 
     function setup() {
-      const W = 220, H = 220;
+      const W = 440, H = 440;
       const canvas = document.createElement('canvas');
       canvas.className = img.className;
       canvas.width = W;
@@ -195,7 +215,7 @@
       }
       img.replaceWith(canvas);
 
-      const rE = 32;
+      const rE = 64;
       const rE2 = rE * rE;
       let lens = null;
 
@@ -216,6 +236,7 @@
           const out = ctx.createImageData(W, H);
           const src = srcData.data, dst = out.data;
           const lx = lens.x, ly = lens.y;
+          const Wm1 = W - 1, Hm1 = H - 1;
           for (let y = 0; y < H; y++) {
             for (let x = 0; x < W; x++) {
               const dx = x - lx, dy = y - ly;
@@ -227,15 +248,24 @@
                 sx = lx + dx * factor;
                 sy = ly + dy * factor;
               }
-              const sxi = sx | 0;
-              const syi = sy | 0;
               const idx = (y * W + x) * 4;
-              if (sxi >= 0 && sxi < W && syi >= 0 && syi < H) {
-                const sidx = (syi * W + sxi) * 4;
-                dst[idx]     = src[sidx];
-                dst[idx + 1] = src[sidx + 1];
-                dst[idx + 2] = src[sidx + 2];
-                dst[idx + 3] = src[sidx + 3];
+              if (sx >= 0 && sx <= Wm1 && sy >= 0 && sy <= Hm1) {
+                const x0 = sx | 0, y0 = sy | 0;
+                const x1 = x0 < Wm1 ? x0 + 1 : x0;
+                const y1 = y0 < Hm1 ? y0 + 1 : y0;
+                const fx = sx - x0, fy = sy - y0;
+                const w00 = (1 - fx) * (1 - fy);
+                const w10 = fx * (1 - fy);
+                const w01 = (1 - fx) * fy;
+                const w11 = fx * fy;
+                const i00 = (y0 * W + x0) * 4;
+                const i10 = (y0 * W + x1) * 4;
+                const i01 = (y1 * W + x0) * 4;
+                const i11 = (y1 * W + x1) * 4;
+                dst[idx]     = src[i00]     * w00 + src[i10]     * w10 + src[i01]     * w01 + src[i11]     * w11;
+                dst[idx + 1] = src[i00 + 1] * w00 + src[i10 + 1] * w10 + src[i01 + 1] * w01 + src[i11 + 1] * w11;
+                dst[idx + 2] = src[i00 + 2] * w00 + src[i10 + 2] * w10 + src[i01 + 2] * w01 + src[i11 + 2] * w11;
+                dst[idx + 3] = src[i00 + 3] * w00 + src[i10 + 3] * w10 + src[i01 + 3] * w01 + src[i11 + 3] * w11;
               }
             }
           }
